@@ -15,11 +15,11 @@ now = datetime.datetime.now()
 ####SQL CONNETION####
 connection = sqlite3.connect('data/twitter.db')
 c = connection.cursor()
-# c.execute('''DROP TABLE IF EXISTS tweets''')
+#c.execute('''DROP TABLE IF EXISTS tweets''')
 # c.execute('''DROP TABLE IF EXISTS users''')
 
 c.execute('''CREATE TABLE IF NOT EXISTS tweets 
-			 (id INTEGER PRIMARY KEY AUTOINCREMENT, tweet text NOT NULL, date_posted default CURRENT_DATE, user_id INTEGER, FOREIGN KEY(user_id) REFERENCES users(id))''')
+			 (id INTEGER PRIMARY KEY AUTOINCREMENT, tweet VARCHAR(120) NOT NULL, date_posted default CURRENT_DATE, user_id INTEGER, FOREIGN KEY(user_id) REFERENCES users(id))''')
 c.execute('''CREATE TABLE IF NOT EXISTS users
 			 (id INTEGER PRIMARY KEY AUTOINCREMENT, username text NOT NULL, password VARCHAR(12) NOT NULL, fname text, lname text, birthday date)''')
 connection.commit()
