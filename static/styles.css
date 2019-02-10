@@ -1,0 +1,159 @@
+body.container-fluid{
+	background-color: #c0deed !important;
+	color: #5b5b5b;
+	font-family: 'Lato', sans-serif;
+	height: 100%;
+	width: 100%;
+}
+
+a:link{
+	color: #d8b0b6;
+	text-decoration: none;
+	font-style: bold !important;
+}
+
+a:visited{
+	color: lightgrey;
+	text-decoration: none;
+	font-style: bold !important;
+}
+
+h1{
+	text-align: center;
+}
+
+h2{
+	text-align: center;
+	padding-bottom: 20px;
+}
+
+div #display_pic{
+	display: block;
+	margin: 0 auto;
+	padding: 10%;
+}
+
+#menu {
+	text-align: center;
+	padding: 2%;
+	background-color: #5b5b5b;
+	font-weight: bold;
+	color: white !important;
+}
+
+.unstyled_ul{
+	list-style: none;
+}
+
+.col-sm {
+	height: 100%;
+}
+
+div#left{
+	background-color: #d8b0b6;
+	align-content: center !important;
+	height: 100%;
+	padding-top: 20%;
+}
+div#right{
+	background-color: #feebeb;
+	padding: 10%;
+	height: 100%;
+}
+
+.block{
+	padding-top: 15%;
+	padding-bottom: 15%;
+}
+
+#sidebar{
+	height: 100%;
+	background-color: #d8b0b6;
+	position: fixed;
+	padding-bottom: 10%
+	padding-left: 10%;
+	width: 25%;
+	margin-left: auto
+}
+.row{
+	background-color: #d8b0b6;
+}
+
+.menu-item{
+	margin-left: 50px;
+	margin-right: 50px;
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+#sidebar{
+	position: relative;
+}
+
+#menu{
+	display: block;
+    }
+    div#left{
+    	padding-bottom: 10%;
+    }
+}
+
+div#blogHomepage {
+  column-count: 3;
+  margin-top: 50px;
+  padding: 10%;
+}
+
+#title{
+	padding-top: 5%;
+	text-orientation: center;
+}
+
+.thick-border {
+        border: 3px solid black;
+        border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+tr{
+	background-color: white !important;
+}
+th{
+	background-color: #007a99 !important;
+	color: white;
+}
+
+
+.centered-text{
+	text-align: center;
+}
+#tableOftweets{
+	padding: 5%;
+}
+
+.analyzeTweetsButton{
+	padding: 10px !important;
+	margin-top: 10px !important;
+	background-color: #008CBA !important;
+}
+/*.button {
+  background-color: #4CAF50 !important;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+*/
+img.img_twitterlogo{
+  height: 50px !important;
+  width: 50px !important;
+ }

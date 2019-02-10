@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Jasmine Bayani's Post Tweets</title>
+    <meta name="description" content="Twitter Sentiment Analyzer">
+    <meta name="Jasmine" content="SitePoint">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <!--BOOTSTRAP-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="static/styles.css?v=1.0">
+</head>
+
+<body class="container-fluid">
+      <div id="menu" class="navbar navbar-default fixed-top">
+         <div class="container-fluid"><a href=#mainContent class="menu-item">^</a><a href="/" class="menu-item">TWITTER CLONE</a> <form action="/logout"><input style=" padding: 10px; background-color: #008CBA; color: white; font-weight: bold; border-color: darkgrey; border-width: 3px;" type="submit" value="LOG OUT"> </form></div>
+      </div>
+      <div id="mainContent" style="padding-top: 30px; padding-bottom: 30px;">
+         <div class = "container-fluid" id="title" style="padding-bottom: 50px;">
+                     <a href="/"><img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c53e.png" alt="Twitter Logo" style="height:100px; width: 100px; margin-left: 50%; margin-right: 50%;"></a>
+            <h1 style="color: black;">TWITTER CLONE</h1>
+         </div>
+
+        <div align="center">
+            <h2>You are logged in as {{username}}</h2>
+            <!-- <h3>Your Tweets:</h3> -->
+            <h2>Post a new tweet:</h2>
+            <h3 style="background-color: black; color: green !important;>">{{status_PostTweet}}</h3>
+            <form method='POST' action="/tweet-posted">
+               <input name="tweetPost" style=" padding: 10px; padding-left: 5%; padding-right: 5%; border-color: darkgrey">
+               <div>
+               </div>
+               <input style=" padding: 10px; margin-top: 10px; background-color: #008CBA; color: white; font-weight: bold; border-color: darkgrey; border-width: 3px;" type="submit" value="Post my tweet!">
+            </form>
+            <div id="tableOfPostedtweets" style="padding-top: 10px;">
+                <table class="centered-text">
+                    <tr>
+                        <th>Tweets by {{username}}</th>
+                    </tr>
+                    {% for tweet in userTweets %}
+                    <tr>
+                        <td>{{ tweet }} </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--main content -->
+</body>
+<!--container -->
+
+</html>
