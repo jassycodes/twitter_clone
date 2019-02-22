@@ -15,7 +15,7 @@ now = datetime.datetime.now()
 ####SQL CONNETION####
 connection = sqlite3.connect('data/twitter.db')
 c = connection.cursor()
-#c.execute('''DROP TABLE IF EXISTS tweets''')
+# c.execute('''DROP TABLE IF EXISTS tweets''')
 # c.execute('''DROP TABLE IF EXISTS users''')
 
 c.execute('''CREATE TABLE IF NOT EXISTS tweets 
@@ -48,24 +48,40 @@ def registerTwitter():
 
 	c.execute("SELECT username FROM users WHERE username=?",(username,))
 	
-	if c.fetchone() is tuple:
+	if c.fetchone() is not None:
+		c.execute("SELECT username FROM users WHERE username=?",(username,))
 		username_in_db = c.fetchone()[0]
+		print(username_in_db)
 		if username_in_db != username:
 			userFound = False
 			c.execute("INSERT INTO users(username, password) VALUES(?,?);", (username, password))
+			connection.commit()
+			connection.close()
 			status = "Succesfully created your account!"
+			print("New User: ")
+			print(username)
+			resp = make_response(redirect('/dashboard'))
+			resp.set_cookie('sessionID', username)
+			# loggedInAs = request.cookies.get('sessionID')
+			return resp
 		else:
 			userFound = True
 			status = "'" + username + "' already exists"
+			return render_template('register.html', status_CreateUser=status)
 	else:
 		userFound = False
 		c.execute("INSERT INTO users(username, password) VALUES(?,?);", (username, password))
+		connection.commit()
+		connection.close()
 		status = "Succesfully created your account!"
+		print("New User: ")
+		print(username)
+		resp = make_response(redirect('/dashboard'))
+		resp.set_cookie('sessionID', username)
+		return resp
+		# return redirect('/dashboard')
 
-	connection.commit()
-	connection.close()
 
-	return render_template('register.html', status_CreateUser=status)
 
 @app.route("/login")
 def loginTwitter():
@@ -85,11 +101,12 @@ def loginUser():
 	print('login GET')
 	c.execute("SELECT username FROM users WHERE username='{}'".format(username))
 
-	fetch = c.fetchone()
-	print(type(fetch))
-	if type(fetch) is tuple:
+	# fetch = c.fetchone()
+	# print(type(fetch))
+	if c.fetchone() is not None:
 		#print("Object exists")
-		username_in_db = fetch[0]
+		c.execute("SELECT username FROM users WHERE username='{}'".format(username))
+		username_in_db = c.fetchone()[0]
 		resp = ''
 		if username_in_db == username:
 			userFound = True
@@ -97,7 +114,6 @@ def loginUser():
 			password_in_db = c.fetchone()[0]
 			connection.commit()
 			connection.close()
-
 			if password == password_in_db:
 				status = "Succesfully logged in"
 				resp = make_response(redirect('/dashboard'))
